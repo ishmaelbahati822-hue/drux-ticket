@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DRUX TICKETS | Book Your Experience</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #090909;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    header {
+      padding: 24px 16px;
+      text-align: center;
+      background: #151515;
+      border-bottom: 2px solid #d6ad55;
+    }
+    header h1 {
+      color: #e8bd65;
+      margin: 0;
+      letter-spacing: 3px;
+    }
+    header p { color: #bbb; }
+    .hero {
+      text-align: center;
+      padding: 55px 18px;
+      background: linear-gradient(135deg, #292013, #090909);
+    }
+    .hero h2 { font-size: 32px; margin-bottom: 10px; }
+    .gold { color: #e8bd65; }
+    .events {
+      max-width: 900px;
+      margin: auto;
+      padding: 25px 16px;
+    }
+    .event {
+      background: #191919;
+      border: 1px solid #725b30;
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 22px;
+    }
+    .event h3 { color: #e8bd65; font-size: 24px; }
+    .price { font-size: 21px; font-weight: bold; }
+    .book {
+      display: inline-block;
+      padding: 13px 22px;
+      background: #d6ad55;
+      color: #111;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .booking {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 25px 16px;
+      text-align: center;
+      background: #171717;
+    }
+    input, select {
+      width: 100%;
+      padding: 14px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #777;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 15px;
+      background: #d6ad55;
+      border: 0;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #aaa;
+      background: #151515;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>DRUX TICKETS</h1>
+  <p>Your Experience. Your Ticket.</p>
+</header>
+
+<section class="hero">
+  <h2>DISCOVER THE <span class="gold">EXPERIENCE</span></h2>
+  <p>Find events. Book tickets. Make memories.</p>
+</section>
+
+<section class="events">
+  <h2 class="gold">UPCOMING EVENTS</h2>
+
+  <div class="event">
+    <h3>OPIUM PARTY</h3>
+    <p>📍 Venue: Mamba Village</p>
+    <p>📅 Date: 28 November 2026</p>
+    <p class="price">Ordinary: KSh 500</p>
+    <p class="price">VIP: KSh 1,000</p>
+    <a class="book" href="#booking">Book a Ticket</a>
+  </div>
+
+  <div class="event">
+    <h3>CARNIVAL PANORAMA PARTY</h3>
+    <p>📍 Venue: Kitale West Side Hotel</p>
+    <p>📅 Date: 13 December 2026</p>
+    <p>🕙 Time: 10:00 AM till late</p>
+    <p class="price">Entry: KSh 300</p>
+    <a class="book" href="#booking">Book a Ticket</a>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <h2 class="gold">TICKET BOOKING</h2>
+  <p>Select an event to begin your booking.</p>
+
+  <form onsubmit="bookTicket(event)">
+    <input id="customer" type="text"
+      placeholder="Your full name" required>
+
+    <input id="phone" type="tel"
+      placeholder="Your phone number" required>
+
+    <select id="event" required>
+      <option value="">Choose your event</option>
+      <option value="Opium Party">Opium Party</option>
+      <option value="Carnival Panorama Party">
+        Carnival Panorama Party
+      </option>
+    </select>
+
+    <select id="ticket" required>
+      <option value="">Choose ticket type</option>
+      <option value="Ordinary">Ordinary - KSh 500</option>
+      <option value="VIP">VIP - KSh 1,000</option>
+      <option value="General Admission">
+        General Admission - KSh 300
+      </option>
+    </select>
+
+    <button type="submit">Continue</button>
+  </form>
+  <p id="message"></p>
+  <small>This is a demonstration booking form.
+    No payment is collected yet.</small>
+</section>
+
+<footer>
+  <p>© 2026 DRUX TICKETS</p>
+  <p>Making every event memorable.</p>
+</footer>
+
+<script>
+function bookTicket(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("customer").value;
+  const event = document.getElementById("event").value;
+  const ticket = document.getElementById("ticket").value;
+
+  const prices = {
+    "Ordinary": 500,
+    "VIP": 1000,
+    "General Admission": 300
+  };
+
+  if (
+    (event === "Carnival Panorama Party" &&
+      ticket !== "General Admission") ||
+    (event === "Opium Party" &&
+      ticket === "General Admission")
+  ) {
+    document.getElementById("message").textContent =
+      "Please choose a ticket type available for this event.";
+    return;
+  }
+
+  document.getElementById("message").textContent =
+    "Thank you, " + name + "! Your selection is " +
+    ticket + " for " + event + ". Total: KSh " +
+    prices[ticket] + ". This is not a confirmed ticket.";
+}
+</script>
+
+</body>
+</html>
