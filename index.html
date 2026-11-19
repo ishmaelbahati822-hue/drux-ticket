@@ -138,54 +138,5 @@
       <option value="">Choose ticket type</option>
       <option value="Ordinary">Ordinary - KSh 500</option>
       <option value="VIP">VIP - KSh 1,000</option>
-      <option value="General Admission">
-        General Admission - KSh 300
-      </option>
-    </select>
-
-    <button type="submit">Continue</button>
-  </form>
-  <p id="message"></p>
-  <small>This is a demonstration booking form.
-    No payment is collected yet.</small>
-</section>
-
-<footer>
-  <p>© 2026 DRUX TICKETS</p>
-  <p>Making every event memorable.</p>
-</footer>
-
-<script>
-function bookTicket(e) {
-  e.preventDefault();
-
-  const name = document.getElementById("customer").value;
-  const event = document.getElementById("event").value;
-  const ticket = document.getElementById("ticket").value;
-
-  const prices = {
-    "Ordinary": 500,
-    "VIP": 1000,
-    "General Admission": 300
-  };
-
-  if (
-    (event === "Carnival Panorama Party" &&
-      ticket !== "General Admission") ||
-    (event === "Opium Party" &&
-      ticket === "General Admission")
-  ) {
-    document.getElementById("message").textContent =
-      "Please choose a ticket type available for this event.";
-    return;
-  }
-
-  document.getElementById("message").textContent =
-    "Thank you, " + name + "! Your selection is " +
-    ticket + " for " + event + ". Total: KSh " +
-    prices[ticket] + ". This is not a confirmed ticket.";
-}
-</script>
-
-</body>
-</html>
+      <option value="General Admi
+        
